@@ -1,23 +1,28 @@
 
 
 import React from 'react'
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 
 export const Navbar = () => {
 
-        const handleLogout  = () => {
-           console.log('logout');
-           
-        };
-        
+    const navigate = useNavigate();
+
+
+    const handleLogout = () => {
+        navigate('/login',{
+            replace: true
+        })
+
+    };
+
 
 
     return (
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-            
-            <Link 
-                className="navbar-brand" 
+
+            <Link
+                className="navbar-brand"
                 to="/"
             >
                 Asociaciones
@@ -26,16 +31,16 @@ export const Navbar = () => {
             <div className="navbar-collapse">
                 <div className="navbar-nav">
 
-                    <NavLink 
+                    <NavLink
 
-                        className={ ( {isActive} ) => "nav-item nav-link" + (isActive ? 'active' : '') }
+                        className={({ isActive }) => "nav-item nav-link" + (isActive ? 'active' : '')}
                         to="/marvel"
                     >
                         Marvel
                     </NavLink>
 
-                    <NavLink 
-                        className={ ( {isActive} ) => "nav-item nav-link" + (isActive ? 'active' : '') }
+                    <NavLink
+                        className={({ isActive }) => "nav-item nav-link" + (isActive ? 'active' : '')}
                         to="/dc"
                     >
                         DC
@@ -47,11 +52,11 @@ export const Navbar = () => {
                 <ul className="navbar-nav ml-auto">
 
                     <span className='nav-item nav-link text-info'>
-                            Andres
+                        Andres
                     </span>
-                    <button 
-                        className="nav-item nav-link btn" 
-                        onClick={ handleLogout }
+                    <button
+                        className="nav-item nav-link btn"
+                        onClick={handleLogout}
                     >
                         Logout
                     </button>
